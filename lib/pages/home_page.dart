@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:news_app/widgets/categories_list.dart';
+import 'package:news_app/widgets/newstile.dart';
+import 'package:news_app/widgets/newstile_list.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -30,7 +32,13 @@ class HomePage extends StatelessWidget {
           ],
         ),
       ),
-      body: CategoriesList(),
+      body: CustomScrollView(
+        physics: BouncingScrollPhysics(),
+        slivers: [
+          SliverToBoxAdapter(child: CategoriesList()),
+          NewstileList(),
+        ],
+      ),
     );
   }
 }

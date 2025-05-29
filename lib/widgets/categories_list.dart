@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:news_app/services/get_categories.dart';
 import 'package:news_app/widgets/categorie_card.dart';
 
 class CategoriesList extends StatelessWidget {
@@ -10,9 +11,9 @@ class CategoriesList extends StatelessWidget {
       height: 110,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
-        itemCount: 10,
+        itemCount: 5,
         itemBuilder: (context, i) {
-          return CategorieCard();
+          return CategorieCard(categorie: GetCategories().categoriesList[i]);
         },
       ),
     );
