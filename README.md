@@ -1,8 +1,7 @@
-# 📰 NewsNow – Personalized News by Country
-NewsNow is a Flutter-based mobile app that delivers real-time news tailored to your country and preferences. Whether you're staying informed about local events or global headlines, NewsNow brings the most relevant stories right to your phone.
+# 📰 NewsNow 
+NewsNow is a Flutter-based mobile app that delivers real-time news . Whether you're staying informed about local events or global headlines, NewsNow brings the most relevant stories right to your phone.
 
 <h2>🌍 Key Features</h2>
-🌐 Get the latest news filtered by your country
 
 🔍 Search and browse topics you care about
 
