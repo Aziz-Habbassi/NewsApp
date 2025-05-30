@@ -1,10 +1,24 @@
 import 'package:dio/dio.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:news_app/models/article_model.dart';
 
 class Getnews {
-  Future<void> getnews() async {
+  Future<List<ArticleModel>> getnews(String categorie) async {
+    await dotenv.load(fileName: ".env");
     final Response response = await Dio().get(
-      "https://newsapi.org/v2/everything?q=tunisia&apiKey=6b0adb76a67d4514a1708188bbdb7bd0",
+      "https://newsapi.org/v2/top-headlines?country=us&category=$categorie&apiKey=${dotenv.env["APIKEY"]}",
     );
-    print(response);
+    Map<String, dynamic> data = response.data;
+    List<ArticleModel> articles = [];
+    for (var article in data["articles"]) {
+      articles.add(
+        ArticleModel(
+          image: article["urlToImage"],
+          title: article["title"],
+          description: article["description"],
+        ),
+      );
+    }
+    return articles;
   }
 }

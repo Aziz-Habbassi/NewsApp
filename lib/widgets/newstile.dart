@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:news_app/models/article_model.dart';
 
 class Newstile extends StatelessWidget {
-  const Newstile({super.key});
-
+  const Newstile({super.key, required this.articleModel});
+  final ArticleModel articleModel;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -11,12 +12,14 @@ class Newstile extends StatelessWidget {
         children: [
           ClipRRect(
             borderRadius: BorderRadiusGeometry.circular(10),
-            child: Image.asset("assets/images/sports.jpg"),
+            child: articleModel.image == null
+                ? Image.asset("assets/images/noData.jpg")
+                : Image.network(articleModel.image!),
           ),
           Text(
             maxLines: 2,
             overflow: TextOverflow.ellipsis,
-            "i want to use custom scrollview with sliverLIst on it what is the difference between sliver with delegate sliverChildBuilderDelegate and sliverlist.builder",
+            articleModel.title,
             style: TextStyle(
               fontWeight: FontWeight.bold,
               fontSize: 22,
@@ -26,7 +29,9 @@ class Newstile extends StatelessWidget {
           Text(
             maxLines: 3,
             overflow: TextOverflow.ellipsis,
-            "i want to use custom scrollview with sliverLIst on it what is the difference between sliver with delegate sliverChild Builde rDelegate and sliverlist.builder",
+            articleModel.description == null
+                ? "No description"
+                : articleModel.description!,
             style: TextStyle(
               fontSize: 14,
               color: Colors.grey,
